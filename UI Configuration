@@ -1,0 +1,1735 @@
+kiosk_mode:
+  user_settings:
+    - users:
+        - user 1
+        - user 2
+      hide_sidebar: false
+      hide_header: true
+swipe_nav:
+  wrap: false
+  enable_mouse_swipe: true
+  animate: swipe
+  prevent_default: true
+  swipe_amount: 10
+views:
+  - title: Home
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#climate'
+            icon: mdi:weather-cloudy
+            state: null
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+            name: Climate Control
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Air Conditioner
+                icon: mdi:air-conditioner
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: thermostat
+                entity: climate.air_conditioner
+                theme: whatsapp_theme
+                name: Living Room
+                show_current_as_primary: false
+                features:
+                  - type: climate-fan-modes
+                    style: dropdown
+                  - type: climate-hvac-modes
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Fans
+                icon: mdi:ceiling-fan
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Office Fan
+                    icon: mdi:fan
+                    label: Smart Plug
+                    show_label: true
+                    show_state: false
+                    entity: switch.office_fan
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          card:
+                            - background: white
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                    styles:
+                      icon:
+                        - width: 24px
+                        - color: '#01a884'
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 18px
+                        - background: '#ffffff'
+                  - type: custom:button-card
+                    name: Bedroom Fan
+                    icon: mdi:fan
+                    label: Smart Plug
+                    show_label: true
+                    show_state: false
+                    entity: switch.bedroom_fan
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          card:
+                            - background: white
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                    styles:
+                      icon:
+                        - width: 24px
+                        - color: '#01a884'
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 18px
+                        - background: '#ffffff'
+              - type: custom:gap-card
+                height: 10
+              - type: custom:bubble-card
+                card_type: separator
+                name: Living Room
+                icon: mdi:home-thermometer-outline
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 1
+                square: false
+                cards:
+                  - type: sensor
+                    graph: line
+                    entity: sensor.broadlink_universal_remote_temperature
+                    detail: 2
+                    icon: mdi:thermometer
+                    name: Temperature
+                  - type: sensor
+                    graph: line
+                    entity: sensor.broadlink_universal_remote_humidity
+                    detail: 2
+                    icon: mdi:water-percent
+                    name: Humidity
+                card_mod:
+                  style: |
+                    mushroom-shape-icon {
+                      --shape-color: none !important;
+                    }      
+                    ha-card { 
+                      --ha-card-background: var(--contrast1);  
+                      --primary-text-color: var(--contrast20);
+                      --card-secondary-font-weight: 400;
+                      box-shadow: none!important;
+                    }
+                    :host {
+                      --mush-icon-size: 46px;
+                    }           
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#lighting'
+            name: Lighting and Scenes
+            icon: mdi:lightbulb
+            state: null
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Living Room
+                icon: mdi:sofa
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: TV Back Light
+                    icon: mdi:television
+                    label: LED Strip
+                    color_type: card
+                    color: auto
+                    show_label: true
+                    show_state: false
+                    entity: light.tv_light
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+                  - type: custom:button-card
+                    name: WLED Light
+                    icon: mdi:led-strip-variant
+                    label: LED Strip
+                    show_label: true
+                    show_state: false
+                    color_type: card
+                    color: auto
+                    entity: light.wled
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Dining Room and Kitchen
+                icon: mdi:silverware-variant
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Dining Room Light
+                    icon: mdi:ceiling-light
+                    label: Light Bulb
+                    color_type: card
+                    color: auto
+                    show_label: true
+                    show_state: false
+                    entity: light.dining_room_light
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+                  - type: custom:button-card
+                    name: Kitchen Light
+                    icon: mdi:led-strip-variant
+                    label: LED Strip
+                    color_type: card
+                    color: auto
+                    show_label: true
+                    show_state: false
+                    entity: light.kitchen_light
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Bedroom
+                icon: mdi:bed
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Bedroom Lamps
+                    icon: mdi:lamp
+                    label: Light Bulb
+                    color_type: card
+                    color: auto
+                    show_label: true
+                    show_state: false
+                    entity: light.bedroom_lamps
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Office
+                icon: mdi:chair-rolling
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Office Lamp
+                    icon: mdi:desk-lamp
+                    label: Light Bulb
+                    color_type: card
+                    color: auto
+                    show_label: true
+                    show_state: false
+                    entity: light.entry_lamp
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          icon:
+                            - color: black
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Outdoor Lights
+                icon: mdi:outdoor-lamp
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Porch Lights
+                    color_type: card
+                    color: auto
+                    icon: mdi:coach-lamp
+                    label: Light Bulb
+                    show_label: true
+                    show_state: false
+                    entity: light.porch_lights
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          icon:
+                            - color: black
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+                  - type: custom:button-card
+                    name: Fairy Lights
+                    icon: mdi:string-lights
+                    label: Smart Plug
+                    color_type: card
+                    color: auto
+                    show_label: true
+                    show_state: false
+                    entity: light.outdoor_fairy_lights_socket_1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          card:
+                            - background: orange
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+                  - type: custom:button-card
+                    name: Flood Light
+                    icon: mdi:light-flood-down
+                    label: Light Bulb
+                    show_label: true
+                    show_state: false
+                    entity: light.flood_light
+                    color_type: card
+                    color: auto
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                          icon:
+                            - color: '#01a884'
+                    styles:
+                      icon:
+                        - width: 40px
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Quick Actions
+                icon: mdi:light-switch-off
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Lights ON
+                    icon: mdi:lightbulb-group-outline
+                    show_label: true
+                    show_state: false
+                    entity: input_button.all_lights_on
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      icon:
+                        - width: 40px
+                        - color: '#01a884'
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+                        - background: '#121a21'
+                  - type: custom:button-card
+                    name: Lights OFF
+                    icon: mdi:lightbulb-group-off-outline
+                    show_label: true
+                    show_state: false
+                    entity: input_button.all_lights_off
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      icon:
+                        - width: 40px
+                        - color: '#01a884'
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 15px
+                        - background: '#121a21'
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#vacuum'
+            name: Eufy RoboVac
+            icon: mdi:robot-vacuum
+            state: null
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Mark
+                icon: mdi:vacuum
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: custom:vacuum-card
+                entity: vacuum.mark
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#security'
+            name: Security System
+            icon: mdi:security
+            state: null
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: CCTV
+                icon: mdi:cctv
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: picture
+                image: https://www.home-assistant.io/images/default-social.png      #CCTV footage goes here
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Sensors and Lights
+                icon: mdi:motion-sensor
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Sliding Front Door
+                    icon: mdi:door
+                    label: Sensor
+                    show_label: true
+                    show_state: false
+                    entity: binary_sensor.back_door_sensor_door
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        icon: mdi:door-open
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          card:
+                            - background: white
+                          icon:
+                            - color: rgb(235, 0, 0)
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                    styles:
+                      icon:
+                        - width: 24px
+                        - color: '#01a884'
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 18px
+                  - type: custom:button-card
+                    name: Flood Light
+                    icon: mdi:light-flood-down
+                    label: Light Bulb
+                    show_label: true
+                    show_state: false
+                    entity: light.flood_light
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          card:
+                            - background: white
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                    styles:
+                      icon:
+                        - width: 24px
+                        - color: '#01a884'
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 18px
+                        - background: '#ffffff'
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#info'
+            name: Home Information
+            icon: mdi:home
+            state: null
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 10
+              - type: custom:bubble-card
+                card_type: separator
+                name: Wifi Login
+                icon: mdi:wifi
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: custom:vertical-stack-in-card
+                cards:
+                  - type: markdown
+                    content: >
+                      <ha-icon icon="mdi:account"></ha-icon>          Username:
+                      WiFi12345
+                    theme: whatsapp_theme
+                    card_mod:
+                      style: |
+                        ha-card {
+                          font-size: 20px;
+                          font-weight: ;
+                        }
+                  - type: markdown
+                    content: >
+                      <ha-icon icon="mdi:lock"></ha-icon>      Password:
+                      123456789
+                    card_mod:
+                      style: |
+                        ha-card {
+                          font-size: 20px;
+                          font-weight: ;
+                        }
+                    theme: whatsapp_theme
+              - type: custom:gap-card
+                height: 10
+              - type: custom:bubble-card
+                card_type: separator
+                name: Internet Conection
+                icon: mdi:web
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 1
+                square: false
+                cards:
+                  - type: sensor
+                    graph: line
+                    entity: sensor.speedtest_download
+                    detail: 2
+                    icon: mdi:download
+                    name: Download Speed
+                  - type: sensor
+                    graph: line
+                    entity: sensor.speedtest_upload
+                    detail: 2
+                    icon: mdi:upload
+                    name: Upload Speed
+                  - type: sensor
+                    graph: line
+                    entity: sensor.speedtest_ping
+                    detail: 2
+                    icon: mdi:lan-pending
+                    name: Ping
+                card_mod:
+                  style: |
+                    mushroom-shape-icon {
+                      --shape-color: none !important;
+                    }      
+                    ha-card { 
+                      --ha-card-background: var(--contrast1);  
+                      --primary-text-color: var(--contrast20);
+                      --card-secondary-font-weight: 400;
+                      box-shadow: none!important;
+                    }
+                    :host {
+                      --mush-icon-size: 46px;
+                    }           
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#user_2'
+            icon: mdi:face-woman
+            state: person.user_2
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+            name: User 2
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Location
+                icon: mdi:map-marker-radius
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: picture
+                image: https://www.home-assistant.io/images/default-social.png         #map with person entity goes here
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#user_1'
+            icon: mdi:face-man
+            state: person.user_1
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+            name: User 1
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Location
+                icon: mdi:map-marker-radius
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: picture
+                image: https://www.home-assistant.io/images/default-social.png           #map with person entity goes here
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#weather'
+            icon: mdi:weather-cloudy
+            state: null
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+            name: Weather
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Local Area
+                icon: mdi:sun-thermometer
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: custom:clock-weather-card
+                entity: weather.tomorrow_io_home_daily
+                sun_entity: sun.sun
+                weather_icon_type: fill
+                animated_icon: true
+                forecast_rows: 5
+                locale: en-GB
+                time_pattern: HH:mm
+                time_format: 24
+                date_pattern: cccc, d MMM y
+                hide_today_section: false
+                hide_forecast_section: false
+                show_humidity: false
+                hide_clock: true
+                hide_date: false
+                hourly_forecast: false
+                use_browser_time: false
+                time_zone: null
+                show_decimal: false
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Rainfall
+                icon: mdi:weather-pouring
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 1
+                square: false
+                cards:
+                  - type: custom:weather-radar-card
+                    data_source: RainViewer-DarkSky
+                    show_marker: true
+                    map_style: dark
+                    show_zoom: true
+                    square_map: false
+                    show_recenter: true
+                    extra_labels: false
+                    show_range: false
+                    show_scale: true
+                    show_playback: false
+                    static_map: false
+                    center_latitude: -26.4390917
+                    center_longitude: 133.281323
+                    zoom_level: 4
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#alarm'
+            name: Home Security
+            icon: mdi:security
+            state: null
+            bg_blur: '20'
+            shadow_opacity: '20'
+            bg_opacity: '88'
+            styles: |
+              #header-container > div {background: #121a21!important;}     
+              #header-container > button {background: #121a21;}
+              .icon-container {background-color:#01a884!important;}  
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Alarm System
+                icon: mdi:shield-lock
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: alarm-panel
+                entity: alarm_control_panel.alarmo
+                name: Home
+                theme: whatsapp_theme
+                states:
+                  - arm_home
+                  - arm_away
+              - type: custom:gap-card
+                height: 20
+              - type: custom:bubble-card
+                card_type: separator
+                name: Sensors
+                icon: mdi:motion-sensor
+                styles: |
+                  .separator-container div:last-child {
+                    opacity: 1!important;
+                  }
+              - type: grid
+                columns: 2
+                square: false
+                cards:
+                  - type: custom:button-card
+                    name: Sliding Front Door
+                    icon: mdi:door
+                    label: Sensor
+                    show_label: true
+                    show_state: false
+                    entity: binary_sensor.back_door_sensor_door
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    state:
+                      - value: 'on'
+                        icon: mdi:door-open
+                        styles:
+                          name:
+                            - color: '#121a21'
+                          label:
+                            - color: '#121a21'
+                          card:
+                            - background: white
+                          icon:
+                            - color: rgb(235, 0, 0)
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background: '#121a21'
+                    styles:
+                      icon:
+                        - width: 24px
+                        - color: '#01a884'
+                      img_cell:
+                        - justify-self: end
+                        - width: 30px
+                        - height: 30px
+                      name:
+                        - justify-self: start
+                        - font-size: 18px
+                        - line-height: 40px
+                        - font-weight: 600
+                      label:
+                        - justify-self: start
+                        - font-size: 14px
+                        - font-weight: 500
+                      card:
+                        - padding: 18px
+      - square: false
+        type: grid
+        cards:
+          - square: false
+            type: grid
+            cards:
+              - type: custom:button-card
+                name: >
+                  [[[ return states['sensor.day'].state + ", " +
+                  states['sensor.date'].state ]]]
+                label: |
+                  [[[ return states['sensor.time'].state ]]]
+                show_label: true
+                styles:
+                  grid:
+                    - grid-template-areas: '"n" "l"'
+                  card:
+                    - background: none
+                    - padding-left: 8px
+                  name:
+                    - justify-self: start
+                    - font-size: 14px
+                  label:
+                    - justify-self: start
+                    - font-size: 26px
+                    - font-weight: 500
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-width: 0px;
+                      box-shadow: 0px 0px;
+                    }
+              - type: custom:button-card
+                name: >
+                  [[[ return states['sensor.local_hourly_rain'].state
+                  + "mm" ]]]
+                label: >
+                  [[[ return
+                  states['weather.tomorrow_io_home_daily'].attributes.temperature          
+                  + '<span style="font-size:0.6em">°C</span>' ]]]
+                show_label: true
+                custom_fields:
+                  icon: |
+                    [[[
+                      var weather = states['weather.tomorrow_io_home_daily'].state;
+                      return '<img src = "/local/weather_icons/' + weather + '.svg" width="50" height="50" />'
+                    ]]] 
+                styles:
+                  grid:
+                    - grid-template-areas: '"icon n" "icon l"'
+                  card:
+                    - background: none
+                    - padding-right: 8px
+                  name:
+                    - justify-self: end
+                    - font-size: 14px
+                  label:
+                    - justify-self: end
+                    - font-size: 26px
+                    - font-weight: 500
+                  custom_fields:
+                    icon:
+                      - justify-self: end;
+                      - align-self: end;
+                      - padding-right: 10px
+                      - margin-bottom: '-11px'
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-width: 0px;
+                      box-shadow: 0px 0px;
+                    }
+                tap_action:
+                  action: navigate
+                  navigation_path: '#weather'
+            columns: 2
+          - type: custom:button-card
+            show_state: true
+            show_icon: false
+            name: Home Assistant
+            card_mod:
+              style: |
+                ha-card {
+                  border-width: 0px;
+                  box-shadow: 0px 0px;
+                }
+            styles:
+              card:
+                - background: none
+                - border: 0
+                - padding: 40px 0
+                - '--mdc-ripple-press-opacity': 0
+              name:
+                - font-size: 40px
+                - color: var(--contrast20)
+          - square: false
+            type: grid
+            cards:
+              - type: custom:button-card
+                icon: mdi:face-man
+                entity: person.user_1
+                show_state: true
+                show_name: true
+                hide_icon: true
+                name: User 1
+                state_display: null
+                show_unit: true
+                show_label: true
+                show_last_changed: false
+                tap_action:
+                  action: navigate
+                  navigation_path: '#user_1'
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-width: 0px;
+                      box-shadow: 0px 0px;
+                    }
+                styles:
+                  outline: false
+                  icon:
+                    - width: 100px
+                    - color: '#01a884'
+                  img_cell:
+                    - width: 50px
+                    - height: 60px
+                  card:
+                    - background: none
+                    - padding: 0
+              - type: custom:button-card
+                icon: mdi:face-woman
+                entity: person.user_2
+                show_state: true
+                show_name: true
+                hide_icon: true
+                name: User 2
+                state_display: null
+                show_unit: true
+                show_label: true
+                show_last_changed: false
+                tap_action:
+                  action: navigate
+                  navigation_path: '#user_2'
+                card_mod:
+                  style: |
+                    ha-card {
+                      border-width: 0px;
+                      box-shadow: 0px 0px;
+                    }
+                styles:
+                  outline: false
+                  icon:
+                    - width: 100px
+                    - color: '#01a884'
+                  img_cell:
+                    - width: 50px
+                    - height: 60px
+                  card:
+                    - background: none
+                    - padding: 0
+            columns: 2
+          - type: custom:mod-card
+            card:
+              type: grid
+              square: false
+              columns: 3
+              cards:
+                - type: custom:button-card
+                  icon: mdi:thermometer
+                  entity: sensor.broadlink_universal_remote_temperature
+                  show_state: true
+                  show_name: true
+                  hide_icon: true
+                  name: Temperature
+                  state_display: null
+                  show_unit: true
+                  show_label: true
+                  show_last_changed: false
+                  tap_action:
+                    action: navigate
+                    navigation_path: '#climate'
+                  card_mod:
+                    style: |
+                      ha-card {
+                        border-width: 0px;
+                        box-shadow: 0px 0px;
+                      }
+                  styles:
+                    outline: false
+                    icon:
+                      - width: 100px
+                      - color: '#01a884'
+                    img_cell:
+                      - width: 50px
+                      - height: 60px
+                    card:
+                      - background: none
+                      - padding: 0
+                - type: custom:button-card
+                  icon: mdi:security
+                  entity: alarm_control_panel.alarmo
+                  show_state: true
+                  show_name: true
+                  hide_icon: true
+                  name: Alarm System
+                  state_display: null
+                  show_unit: true
+                  show_label: true
+                  show_last_changed: false
+                  tap_action:
+                    action: navigate
+                    navigation_path: '#alarm'
+                  card_mod:
+                    style: |
+                      ha-card {
+                        border-width: 0px;
+                        box-shadow: 0px 0px;
+                      }
+                  styles:
+                    outline: false
+                    icon:
+                      - width: 100px
+                      - color: '#01a884'
+                    img_cell:
+                      - width: 50px
+                      - height: 60px
+                    card:
+                      - background: none
+                      - padding: 0
+                - type: custom:button-card
+                  icon: mdi:ceiling-light-multiple
+                  entity: counter.light_counter
+                  show_state: true
+                  show_name: true
+                  hide_icon: true
+                  name: 'Lights ON:'
+                  state_display: null
+                  show_unit: true
+                  show_label: true
+                  show_last_changed: false
+                  tap_action:
+                    action: navigate
+                    navigation_path: '#lighting'
+                  card_mod:
+                    style: |
+                      ha-card {
+                        border-width: 0px;
+                        box-shadow: 0px 0px;
+                      }
+                  styles:
+                    outline: false
+                    icon:
+                      - width: 100px
+                      - color: '#01a884'
+                    img_cell:
+                      - width: 50px
+                      - height: 60px
+                    card:
+                      - background: none
+                      - padding: 0
+          - type: custom:mod-card
+            card:
+              type: grid
+              square: false
+              columns: 2
+              cards:
+                - type: custom:button-card
+                  icon: mdi:water-percent
+                  entity: sensor.broadlink_universal_remote_humidity
+                  show_state: true
+                  show_name: true
+                  hide_icon: true
+                  name: Humidity
+                  state_display: null
+                  show_unit: true
+                  show_label: true
+                  show_last_changed: false
+                  tap_action:
+                    action: navigate
+                    navigation_path: '#climate'
+                  card_mod:
+                    style: |
+                      ha-card {
+                        border-width: 0px;
+                        box-shadow: 0px 0px;
+                      }
+                  styles:
+                    outline: false
+                    icon:
+                      - width: 100px
+                      - color: '#01a884'
+                    img_cell:
+                      - width: 50px
+                      - height: 60px
+                    card:
+                      - background: none
+                      - padding: 0
+                - type: custom:button-card
+                  icon: mdi:robot-vacuum
+                  entity: vacuum.mark
+                  show_state: true
+                  show_name: true
+                  hide_icon: true
+                  name: Eufy RoboVac
+                  state_display: null
+                  show_unit: true
+                  show_label: true
+                  show_last_changed: false
+                  tap_action:
+                    action: navigate
+                    navigation_path: '#vacuum'
+                  card_mod:
+                    style: |
+                      ha-card {
+                        border-width: 0px;
+                        box-shadow: 0px 0px;
+                      }
+                  styles:
+                    outline: false
+                    icon:
+                      - width: 100px
+                      - color: '#01a884'
+                    img_cell:
+                      - width: 50px
+                      - height: 60px
+                    card:
+                      - background: none
+                      - padding: 0
+        columns: 1
+      - type: custom:mod-card
+        card_mod:
+          style: |
+            @media (min-width:180px) {
+              ha-card {
+                z-index: 1;
+                position: fixed;
+                bottom: 20px;
+                left: 10px;
+                width: calc(100% - 20px);
+
+                background: black;
+                border-radius: 100px;
+                padding: 10px;
+                border-width: 0px;
+                box-shadow: 0px 0px;
+              }
+            }
+            @media (min-width:800px) {
+              ha-card {
+                width: calc(60% - 30px);
+                left: calc(20% + 43px);
+              }
+            }
+        card:
+          type: grid
+          square: false
+          columns: 5
+          cards:
+            - type: custom:button-card
+              icon: mdi:home
+              tap_action:
+                action: navigate
+                navigation_path: '#info'
+              card_mod:
+                style: |
+                  ha-card {
+                    border-width: 0px;
+                    box-shadow: 0px 0px;
+                  }
+              styles:
+                icon:
+                  - width: 24px
+                  - color: white
+                img_cell:
+                  - width: 50px
+                  - height: 50px
+                card:
+                  - background: none
+                  - padding: 0
+            - type: custom:button-card
+              icon: mdi:robot-vacuum
+              tap_action:
+                action: navigate
+                navigation_path: '#vacuum'
+              card_mod:
+                style: |
+                  ha-card {
+                    border-width: 0px;
+                    box-shadow: 0px 0px;
+                  }
+              styles:
+                icon:
+                  - width: 24px
+                  - color: white
+                img_cell:
+                  - width: 50px
+                  - height: 50px
+                card:
+                  - background: none
+                  - padding: 0
+            - type: custom:button-card
+              icon: mdi:lightbulb
+              tap_action:
+                action: navigate
+                navigation_path: '#lighting'
+              card_mod:
+                style: |
+                  ha-card {
+                    border-width: 0px;
+                    box-shadow: 0px 0px;
+                  }
+              styles:
+                icon:
+                  - width: 24px
+                  - color: white
+                img_cell:
+                  - width: 50px
+                  - height: 50px
+                card:
+                  - background: none
+                  - padding: 0
+            - type: custom:button-card
+              icon: mdi:air-conditioner
+              tap_action:
+                action: navigate
+                navigation_path: '#climate'
+              card_mod:
+                style: |
+                  ha-card {
+                    border-width: 0px;
+                    box-shadow: 0px 0px;
+                  }
+              styles:
+                icon:
+                  - width: 24px
+                  - color: white
+                img_cell:
+                  - width: 50px
+                  - height: 50px
+                card:
+                  - background: none
+                  - padding: 0
+            - type: custom:button-card
+              icon: mdi:cctv
+              tap_action:
+                action: navigate
+                navigation_path: '#security'
+              card_mod:
+                style: |
+                  ha-card {
+                    border-width: 0px;
+                    box-shadow: 0px 0px;
+                  }
+              styles:
+                outline: false
+                icon:
+                  - width: 24px
+                  - color: white
+                img_cell:
+                  - width: 50px
+                  - height: 50px
+                card:
+                  - background: none
+                  - padding: 0
+    icon: mdi:home-assistant
+    theme: whatsapp_theme
+  - title: list
+    path: list
+    type: panel
+    cards:
+      - type: todo-list
+        entity: todo.shopping_list
+        title: Shopping List
+        theme: whatsapp_theme
